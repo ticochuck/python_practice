@@ -14,9 +14,15 @@ def is_prime(n):
     else:
         return True
     
+loop = True 
 
-a = int(input('Enter a number\n'))
-if is_prime(a):
-    print(f'{a} is Prime')
-else:
-    print(f'{a} is not Prime')
+while loop:
+    a = int(input('Enter a number\n'))
+    
+    if is_prime(a):
+        print(f'{a} is Prime')
+    else:
+        print(f'{a} is not Prime')
+    b = input('Try another number? y/n\n')
+    if b == 'n':
+        loop = False
