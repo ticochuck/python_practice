@@ -1,5 +1,5 @@
 import time
-# import keyboard
+import keyboard
 
 def countdown(t):
 
@@ -16,11 +16,15 @@ def stopwatch():
     an = input('Press 1 to start the stopwatch. \n')
     
     if an.lower() == '1':
-        k = None
+        k = False
         mins, secs = 0, 0
 
-        while not k:
-            try:
+        try:
+            while not k:
+                if keyboard.is_pressed('esc'):
+                    k = True
+                    print('here got the kwy')
+                    break
                 secs += 1
                 if secs % 59 == 0:
                     mins += 1
@@ -28,14 +32,11 @@ def stopwatch():
                 timer = f'{mins:02d}:{secs:02d}'
                 print(f"{timer} -- Press ctrl + C to stop", end='\r')
                 time.sleep(1)
-                # if keyboard.is_pressed('q'):
-                    # break
-                    
-            except KeyboardInterrupt: 
-                print('Timer has stopped')
-                
-            
-            
+                                     
+        except KeyboardInterrupt: 
+            print('Timer has stopped')
+        
+                   
 a = '1'
 while a == '1' or a == '2':
     a = input('1: Timer \n2: Stopwatch \n3: Exit\n')
